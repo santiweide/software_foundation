@@ -422,16 +422,42 @@ Prove that the rev function is injective — that is,
     ∀(l1 l2 : natlist), rev l1 = rev l2 → l1 = l2.
 (There is a hard way and an easy way to do this.)
 *)
+Theorem bag_theo_one_fst: forall l1 l2 : natlist,
+  rev l1 = rev l2 -> l1 = l2.
+Proof.
+  intros l1 l2. destruct l1 as [].
+  intros H. destruct l2 as []. reflexivity. 
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity.
+Abort.
+Theorem bag_theo_one_sec: forall l1 l2 : natlist,
+  rev l1 = rev l2 -> l1 = l2.
+Proof.
+  intros l1 l2. induction l1 as [| n l1' IHl1'].
+  intros H. destruct l2 as []. reflexivity. 
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity.
+  induction l2 as [| l2 IHl2']. intros H.
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity. 
+  intros H.
+Abort.
 Theorem bag_theo_one: forall l1 l2 : natlist,
   rev l1 = rev l2 -> l1 = l2.
 Proof.
-  intros l1 l2. induction l1 as [| n l1 IHl1]. simpl.
-  intros H. rewrite H. 
-  induction l2 as [| n l2 IHl2]. reflexivity.
-  rewrite <- IHl2. simpl. rewrite -> rev_involutive.
+  intros l1 l2. intros H.
+  induction l1 as [| n l1' IHl1'].
+  destruct l2 as []. reflexivity. 
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity.
+  induction l2 as [| l2 IHl2']. 
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity.
+  rewrite <- rev_involutive. rewrite <- H. 
+  rewrite -> rev_involutive. reflexivity.
+Qed.
 
-Abort.
-
+(*rewrite xx -->把xx 带入*)
 
 
 
