@@ -348,9 +348,72 @@ Qed.
 Theorem rev_involutive : forall l : natlist,
   rev (rev l) = l.
 Proof.
-  intros l. induction
+  intros l. induction l as [| n l IHl']. reflexivity.
+  simpl. rewrite -> rev_app_distr.
+  simpl. rewrite -> IHl'.
+  reflexivity.
 Qed.
 
+(* Exercise: 2 stars, standard (eqblist) *)
+(* Fill in the definition of eqblist, which compares lists of numbers for equality. Prove that eqblist l l yields true for every list l. *)
+Fixpoint eqblist (l1 l2 : natlist) : bool :=
+  match l1 with
+  | nil => 
+    match l2 with
+    | nil => true
+    | h :: t => false
+    end
+  | h1 :: t1 => 
+    match l2 with
+    | nil => false
+    | h2 :: t2 => 
+      match h1 =? h2 with
+      | true => eqblist t1 t2
+      | false => false
+      end
+    end
+  end.
+Example test_eqblist1 :
+  (eqblist nil nil = true).
+Proof. simpl. reflexivity. Qed.
+Example test_eqblist2 :
+  eqblist [1;2;3] [1;2;3] = true.
+Proof. simpl. reflexivity. Qed.
+Example test_eqblist3 :
+  eqblist [1;2;3] [1;2;4] = false.
+Proof. simpl. reflexivity. Qed.
+
+Theorem eqblist_refl : forall l:natlist,
+  true = eqblist l l.
+Proof.
+  intros l. induction l as [| n l' IHl']. reflexivity.
+  simpl. rewrite <- eql_theo, IHl'. reflexivity. 
+Qed.
+
+(* Exercise: 1 star, standard (count_member_nonzero) *)
+Theorem count_member_nonzero : forall (s : bag),
+  1 <=? (count 1 (1 :: s)) = true.
+Proof.
+  intros s. induction s as [| n l IHl]. reflexivity.
+  reflexivity.
+Qed.
+
+Theorem leb_n_Sn : forall n,
+  n <=? (S n) = true.
+Proof.
+  intros n. induction n as [| n' IHn'].
+  - (* 0 *)
+    simpl. reflexivity.
+  - (* S n' *)
+    simpl. rewrite IHn'. reflexivity. Qed.
+
+(* Exercise: 3 stars, advanced (remove_does_not_increase_count) *)
+Theorem remove_does_not_increase_count: forall (s : bag),
+  (count 0 (remove_one 0 s)) <=? (count 0 s) = true.
+Proof.
+  intros s. induction s as [| n l IHl]. reflexivity.
+  simpl. 
+Qed.
 
 
 
