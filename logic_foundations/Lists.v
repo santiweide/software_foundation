@@ -458,8 +458,61 @@ Proof.
 Qed.
 
 (*rewrite xx -->把xx 带入*)
+(*Options *)
+(*Suppose we want to write a function that returns the nth element of some list. If we give it type nat → natlist → nat, then we'll have to choose some number to return when the list is too short...*)
+Inductive natoption : Type :=
+  | Some (n:nat)
+  | None.
 
-
-
-
-
+Fixpoint nth_error (l:natlist)(n:nat):natoption:=
+  match l with
+  | nil => None
+  | h :: t => 
+    match n =? 0 with
+    | true => Some h
+    | false => nth_error t (pred n)
+    end
+  end.
+Example test_nth_error1 : nth_error [4;5;6;7] 0 = Some 4.
+Proof. simpl. reflexivity. Qed.
+Example test_nth_error2 : nth_error [4;5;6;7] 3 = Some 7.
+Proof. simpl. reflexivity. Qed.
+Example test_nth_error3 : nth_error [4;5;6;7] 9 = None.
+Proof. simpl. reflexivity. Qed.
+Fixpoint nth_error' (l:natlist) (n:nat) : natoption :=
+  match l with
+  | nil => None
+  | a :: l' => if n =? O then Some a
+               else nth_error' l' (pred n)
+  end.
+Definition option_elim (d:nat)(o:natoption): nat:=
+  match o with
+  | Some n => n
+  | None => d
+  end.
+(*
+Exercise: 2 stars, standard (hd_error)
+Using the same idea, fix the hd function from earlier so we don't have to pass a default element for the nil case.
+*)
+Definition hd_error (l : natlist) : natoption :=
+  match l with
+  | nil => None
+  | h :: t => Some h
+  end.
+Example test_hd_error1 : hd_error [] = None.
+Proof. simpl. reflexivity. Qed.
+Example test_hd_error2 : hd_error [1] = Some 1.
+Proof. simpl. reflexivity. Qed.
+Example test_hd_error3 : hd_error [5;6] = Some 5.
+Proof. simpl. reflexivity. Qed.
+(*
+Exercise: 1 star, standard, optional (option_elim_hd)
+This exercise relates your new hd_error to the old hd.
+*)
+Theorem option_elim_hd : forall (l:natlist) (default:nat),
+  hd default l = option_elim default (hd_error l).
+Proof.
+  intros l default. induction l as [| n l' IHl']. reflexivity.
+  reflexivity.
+Qed.
+End NatList.
