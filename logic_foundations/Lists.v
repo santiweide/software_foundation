@@ -412,8 +412,27 @@ Theorem remove_does_not_increase_count: forall (s : bag),
   (count 0 (remove_one 0 s)) <=? (count 0 s) = true.
 Proof.
   intros s. induction s as [| n l IHl]. reflexivity.
-  simpl. 
+  destruct n. simpl. rewrite -> leb_n_Sn. reflexivity.
+  simpl. rewrite -> IHl. reflexivity.
 Qed.
+
+(*
+Exercise: 4 stars, advanced (rev_injective)
+Prove that the rev function is injective — that is,
+    ∀(l1 l2 : natlist), rev l1 = rev l2 → l1 = l2.
+(There is a hard way and an easy way to do this.)
+*)
+Theorem bag_theo_one: forall l1 l2 : natlist,
+  rev l1 = rev l2 -> l1 = l2.
+Proof.
+  intros l1 l2. induction l1 as [| n l1 IHl1]. simpl.
+  intros H. rewrite H. 
+  induction l2 as [| n l2 IHl2]. reflexivity.
+  rewrite <- IHl2. simpl. rewrite -> rev_involutive.
+  
+  
+Qed.
+
 
 
 
