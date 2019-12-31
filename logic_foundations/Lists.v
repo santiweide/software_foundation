@@ -429,9 +429,8 @@ Proof.
   intros H. rewrite H. 
   induction l2 as [| n l2 IHl2]. reflexivity.
   rewrite <- IHl2. simpl. rewrite -> rev_involutive.
-  
-  
-Qed.
+
+Abort.
 
 
 
