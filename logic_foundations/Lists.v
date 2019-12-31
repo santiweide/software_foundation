@@ -516,3 +516,64 @@ Proof.
   reflexivity.
 Qed.
 End NatList.
+
+(*Partial Maps*)
+Inductive id : Type :=
+  | Id (n:nat).
+Definition eqb_id (x1 x2:id):=
+  match x1,x2 with
+  | Id n1,Id n2 => n1 =? n2
+  end.
+(*Exercise: 1 star, standard (eqb_id_refl)*)
+Theorem eqb_id_refl : forall x, true = eqb_id x x.
+Proof.
+  intros x. destruct x.
+  simpl. rewrite <- eql_theo. reflexivity.
+Qed.
+Module PartialMap.
+Export NatList.
+Inductive partial_map:Type :=
+  |empty
+  |record (i:id)(v:nat)(m:partial_map).
+Definition update (d:partial_map)(x:id)(value:nat):partial_map
+:= record x value d.
+Fixpoint find (x:id)(d:partial_map):natoption :=
+  match d with
+  | empty => None
+  | record y v d' => 
+    if eqb_id x y
+    then Some v
+    else find x d'
+  end.
+(* Exercise: 1 star, standard (update_eq) *)
+Theorem update_eq :
+  forall (d : partial_map) (x : id) (v: nat),
+    find x (update d x v) = Some v.
+Proof.
+  intros d x v. destruct d. destruct x. destruct v.
+  simpl. rewrite <- eql_theo. reflexivity.
+  simpl. rewrite <- eql_theo. reflexivity.
+  simpl. rewrite <- eqb_id_refl. reflexivity.
+Qed.
+(* Exercise: 1 star, standard (update_neq) *)
+Theorem update_neq :
+  forall (d : partial_map) (x y : id) (o: nat),
+    eqb_id x y = false -> find x (update d y o) = find x d.
+Proof.
+  intros d x y o. 
+  destruct x. destruct y. destruct o. simpl.
+  intros H. rewrite -> H. reflexivity.
+  simpl. intros H. rewrite -> H. reflexivity.  
+Qed.
+End PartialMap.
+
+
+
+
+
+
+
+
+
+
+

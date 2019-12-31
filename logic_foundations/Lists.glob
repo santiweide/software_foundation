@@ -1,4 +1,4 @@
-DIGEST 4826679ec95a25afe9284e9278ab2a2f
+DIGEST 568a5d67759114a1c1a6215ba7234e7b
 FLF.Lists
 R55:63 LF.Induction <> <> lib
 mod 73:79 <> NatList
@@ -1085,3 +1085,97 @@ R15033:15040 LF.Lists NatList hd_error def
 R15042:15042 LF.Lists <> l var
 R15024:15030 LF.Lists <> default var
 R15140:15146 LF.Lists NatList <> mod
+ind 15177:15178 <> id
+constr 15194:15195 <> Id
+R15200:15202 Coq.Init.Datatypes <> nat ind
+R15204:15204 LF.Lists <> id ind
+def 15217:15222 <> eqb_id
+R15231:15232 LF.Lists <> id ind
+R15248:15249 LF.Lists <> x2 var
+R15245:15246 LF.Lists <> x1 var
+R15260:15261 LF.Lists <> Id constr
+R15266:15267 LF.Lists <> Id constr
+R15277:15280 LF.Basics <> ::nat_scope:x_'=?'_x not
+prf 15344:15354 <> eqb_id_refl
+R15372:15374 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15368:15371 Coq.Init.Datatypes <> true constr
+R15375:15380 LF.Lists <> eqb_id def
+R15384:15384 LF.Lists <> x var
+R15382:15382 LF.Lists <> x var
+R15438:15445 LF.Induction <> eql_theo thm
+R15438:15445 LF.Induction <> eql_theo thm
+R15438:15445 LF.Induction <> eql_theo thm
+mod 15473:15482 <> PartialMap
+ind 15511:15521 PartialMap partial_map
+constr 15534:15538 PartialMap empty
+constr 15543:15548 PartialMap record
+R15539:15539 LF.Lists <> partial_map ind
+R15553:15554 LF.Lists <> id ind
+R15559:15561 Coq.Init.Datatypes <> nat ind
+R15566:15576 LF.Lists <> partial_map ind
+R15578:15578 LF.Lists <> partial_map ind
+def 15591:15596 PartialMap update
+R15601:15611 LF.Lists PartialMap partial_map ind
+R15616:15617 LF.Lists <> id ind
+R15626:15628 Coq.Init.Datatypes <> nat ind
+R15631:15641 LF.Lists PartialMap partial_map ind
+R15646:15651 LF.Lists PartialMap record constr
+R15661:15661 LF.Lists <> d var
+R15655:15659 LF.Lists <> value var
+R15653:15653 LF.Lists <> x var
+def 15673:15676 PartialMap find
+R15681:15682 LF.Lists <> id ind
+R15687:15697 LF.Lists PartialMap partial_map ind
+R15700:15708 LF.Lists NatList natoption ind
+R15721:15721 LF.Lists <> d var
+R15732:15736 LF.Lists PartialMap empty constr
+R15741:15744 LF.Lists NatList None constr
+R15750:15755 LF.Lists PartialMap record constr
+R15775:15780 LF.Lists <> eqb_id def
+R15782:15782 LF.Lists <> x var
+R15811:15814 LF.Lists <> find def
+R15816:15816 LF.Lists <> x var
+R15795:15798 LF.Lists NatList Some constr
+prf 15881:15889 PartialMap update_eq
+R15907:15917 LF.Lists PartialMap partial_map ind
+R15925:15926 LF.Lists <> id ind
+R15933:15935 Coq.Init.Datatypes <> nat ind
+R15964:15966 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15943:15946 LF.Lists PartialMap find def
+R15951:15956 LF.Lists PartialMap update def
+R15962:15962 LF.Lists <> v var
+R15960:15960 LF.Lists <> x var
+R15958:15958 LF.Lists <> d var
+R15948:15948 LF.Lists <> x var
+R15967:15970 LF.Lists NatList Some constr
+R15972:15972 LF.Lists <> v var
+R16054:16061 LF.Induction <> eql_theo thm
+R16054:16061 LF.Induction <> eql_theo thm
+R16054:16061 LF.Induction <> eql_theo thm
+R16097:16104 LF.Induction <> eql_theo thm
+R16097:16104 LF.Induction <> eql_theo thm
+R16097:16104 LF.Induction <> eql_theo thm
+R16140:16150 LF.Lists <> eqb_id_refl thm
+R16140:16150 LF.Lists <> eqb_id_refl thm
+R16140:16150 LF.Lists <> eqb_id_refl thm
+prf 16225:16234 PartialMap update_neq
+R16252:16262 LF.Lists PartialMap partial_map ind
+R16272:16273 LF.Lists <> id ind
+R16280:16282 Coq.Init.Datatypes <> nat ind
+R16308:16311 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R16333:16335 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16312:16315 LF.Lists PartialMap find def
+R16320:16325 LF.Lists PartialMap update def
+R16331:16331 LF.Lists <> o var
+R16329:16329 LF.Lists <> y var
+R16327:16327 LF.Lists <> d var
+R16317:16317 LF.Lists <> x var
+R16336:16339 LF.Lists PartialMap find def
+R16343:16343 LF.Lists <> d var
+R16341:16341 LF.Lists <> x var
+R16300:16302 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16290:16295 LF.Lists <> eqb_id def
+R16299:16299 LF.Lists <> y var
+R16297:16297 LF.Lists <> x var
+R16303:16307 Coq.Init.Datatypes <> false constr
+R16513:16522 LF.Lists PartialMap <> mod
