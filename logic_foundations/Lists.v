@@ -4,6 +4,7 @@ Module NatList.
 Inductive natprod: Type := 
 |  pair (n1 n2: nat).
 Check (pair 3 5).
+Check pair 3.
 Definition fst(p : natprod) : nat :=
   match p with
   | pair x y => x
@@ -54,6 +55,7 @@ Theorem surjective_pairing_stuck: forall (p:natprod),
 Proof.
   simpl.
 Abort.
+Check natprod.
 Theorem surjetive_pairing: forall p:natprod,
   p = (fst p,snd p).
 Proof.
@@ -163,7 +165,9 @@ Example test_countoddmembers3:
   Proof. reflexivity. Qed.
 (*
 Exercise: 3 stars, advanced (alternate)
-Complete the definition of alternate, which interleaves two lists into one, alternating between elements taken from the first list and elements from the second. See the tests below for more specific examples.
+Complete the definition of alternate,
+ which interleaves two lists into one,
+alternating between elements taken from the first list and elements from the second. See the tests below for more specific examples.
 *)
 Fixpoint alternate (l1 l2 : natlist) : natlist :=
   match l1 with
@@ -186,6 +190,8 @@ Proof. simpl. reflexivity. Qed.
 Example test_alternate4:
   alternate [] [20;30] = [20;30].
 Proof. simpl. reflexivity. Qed.
+
+Fixpoint mergesort
 (* Bags via Lists*)
 (* Exercise: 3 stars, standard, recommended (bag_functions) *)
 Definition bag := natlist.

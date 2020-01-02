@@ -1,3 +1,126 @@
-DIGEST a7fdd4b0c5c0caf74ad4af0b4ed98946
+DIGEST 1ed510696882ef737b2513c1075b5120
 FLF.Poly
 R117:121 LF.Lists <> <> lib
+ind 239:246 <> boollist
+constr 260:267 <> bool_nil
+constr 273:281 <> bool_cons
+R268:268 LF.Poly <> boollist ind
+R287:290 Coq.Init.Datatypes <> bool ind
+R295:302 LF.Poly <> boollist ind
+R304:304 LF.Poly <> boollist ind
+ind 316:319 <> list
+constr 341:343 <> nil
+constr 349:352 <> cons
+R344:344 LF.Poly <> list ind
+R344:344 LF.Poly <> X var
+R357:357 LF.Poly <> X var
+R362:365 LF.Poly <> list ind
+R367:367 LF.Poly <> X var
+R369:369 LF.Poly <> list ind
+R369:369 LF.Poly <> X var
+R377:380 LF.Poly <> list ind
+R390:392 LF.Poly <> nil constr
+R394:397 Coq.Init.Datatypes <> bool ind
+R408:411 LF.Poly <> cons constr
+R413:416 Coq.Init.Datatypes <> bool ind
+R427:430 LF.Poly <> cons constr
+R443:445 LF.Poly <> nil constr
+R447:450 Coq.Init.Datatypes <> bool ind
+R437:440 Coq.Init.Datatypes <> true constr
+R432:435 Coq.Init.Datatypes <> bool ind
+R461:463 LF.Poly <> nil constr
+R472:475 LF.Poly <> cons constr
+R485:488 LF.Poly <> cons constr
+R497:500 LF.Poly <> cons constr
+R509:511 LF.Poly <> nil constr
+R513:515 Coq.Init.Datatypes <> nat ind
+R502:504 Coq.Init.Datatypes <> nat ind
+R490:492 Coq.Init.Datatypes <> nat ind
+def 642:647 <> repeat
+R660:660 LF.Poly <> X var
+R669:671 Coq.Init.Datatypes <> nat ind
+R674:677 LF.Poly <> list ind
+R679:679 LF.Poly <> X var
+R691:695 LF.Poly <> count var
+R710:712 LF.Poly <> nil constr
+R714:714 LF.Poly <> X var
+R720:720 Coq.Init.Datatypes <> S constr
+R732:735 LF.Poly <> cons constr
+R742:747 LF.Poly <> repeat def
+R751:751 LF.Poly <> x var
+R749:749 LF.Poly <> X var
+R739:739 LF.Poly <> x var
+R737:737 LF.Poly <> X var
+def 776:787 <> test_repeat1
+R806:808 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R792:797 LF.Poly <> repeat def
+R799:801 Coq.Init.Datatypes <> nat ind
+R809:812 LF.Poly <> cons constr
+R821:824 LF.Poly <> cons constr
+R833:835 LF.Poly <> nil constr
+R837:839 Coq.Init.Datatypes <> nat ind
+R826:828 Coq.Init.Datatypes <> nat ind
+R814:816 Coq.Init.Datatypes <> nat ind
+def 877:888 <> test_repeat2
+R913:915 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R894:899 LF.Poly <> repeat def
+R906:910 Coq.Init.Datatypes <> false constr
+R901:904 Coq.Init.Datatypes <> bool ind
+R916:919 LF.Poly <> cons constr
+R933:935 LF.Poly <> nil constr
+R937:940 Coq.Init.Datatypes <> bool ind
+R926:930 Coq.Init.Datatypes <> false constr
+R921:924 Coq.Init.Datatypes <> bool ind
+mod 1081:1093 <> MumbleGrumble
+ind 1106:1111 MumbleGrumble mumble
+constr 1127:1127 MumbleGrumble a
+constr 1133:1133 MumbleGrumble b
+constr 1162:1162 MumbleGrumble c
+R1128:1128 LF.Poly <> mumble ind
+R1140:1145 LF.Poly <> mumble ind
+R1153:1155 Coq.Init.Datatypes <> nat ind
+R1157:1157 LF.Poly <> mumble ind
+R1163:1163 LF.Poly <> mumble ind
+ind 1175:1181 MumbleGrumble grumble
+constr 1206:1206 MumbleGrumble d
+constr 1225:1225 MumbleGrumble e
+R1213:1218 LF.Poly MumbleGrumble mumble ind
+R1220:1220 LF.Poly <> grumble ind
+R1220:1220 LF.Poly <> X var
+R1232:1232 LF.Poly <> X var
+R1234:1234 LF.Poly <> grumble ind
+R1234:1234 LF.Poly <> X var
+R1242:1247 LF.Poly MumbleGrumble mumble ind
+R1256:1256 LF.Poly MumbleGrumble a constr
+R1266:1266 LF.Poly MumbleGrumble b constr
+R1268:1268 LF.Poly MumbleGrumble a constr
+R1280:1280 LF.Poly MumbleGrumble c constr
+R1289:1289 LF.Poly MumbleGrumble d constr
+R1296:1296 LF.Poly MumbleGrumble b constr
+R1298:1298 LF.Poly MumbleGrumble a constr
+R1291:1293 Coq.Init.Datatypes <> nat ind
+R1310:1310 LF.Poly MumbleGrumble d constr
+R1318:1318 LF.Poly MumbleGrumble b constr
+R1320:1320 LF.Poly MumbleGrumble a constr
+R1312:1315 Coq.Init.Datatypes <> bool ind
+R1332:1332 LF.Poly MumbleGrumble e constr
+R1334:1337 Coq.Init.Datatypes <> bool ind
+R1346:1346 LF.Poly MumbleGrumble e constr
+R1353:1356 Coq.Init.Datatypes <> true constr
+R1348:1351 Coq.Init.Datatypes <> bool ind
+R1426:1438 LF.Poly MumbleGrumble <> mod
+def 1480:1486 <> repeat'
+R1500:1503 LF.Poly <> list ind
+R1505:1505 LF.Poly <> X var
+R1518:1522 LF.Poly <> count var
+R1538:1540 LF.Poly <> nil constr
+R1542:1542 LF.Poly <> X var
+R1548:1548 Coq.Init.Datatypes <> S constr
+R1560:1563 LF.Poly <> cons constr
+R1570:1576 LF.Poly <> repeat' def
+R1580:1580 LF.Poly <> x var
+R1578:1578 LF.Poly <> X var
+R1567:1567 LF.Poly <> x var
+R1565:1565 LF.Poly <> X var
+R1603:1609 LF.Poly <> repeat' def
+R1665:1670 LF.Poly <> repeat def
