@@ -191,7 +191,6 @@ Example test_alternate4:
   alternate [] [20;30] = [20;30].
 Proof. simpl. reflexivity. Qed.
 
-Fixpoint mergesort
 (* Bags via Lists*)
 (* Exercise: 3 stars, standard, recommended (bag_functions) *)
 Definition bag := natlist.

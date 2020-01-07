@@ -64,6 +64,13 @@ Fixpoint evenb (n:nat):bool:=
   | S 0 => false
   | S (S p) => evenb p
 end.
+(*判断是不是一个偶数*)
+Fixpoint oddb (n:nat):bool:=
+  match n with
+  | 0 => false
+  | S 0 => true
+  | S (S p) => oddb p
+end.
 (*加法定义*)
 Fixpoint plus (n m:nat) :nat :=
   match n with
