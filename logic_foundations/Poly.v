@@ -542,7 +542,7 @@ Exercise: 2 stars, advanced (church_mult)
 Multiplication:
 *)
 Definition mult (n m : cnat) : cnat :=
- fun (X : Type)(f:X->X)(x:X)=> (n X f x).
+ fun (X : Type)(f:X->X)(x:X)=> m X (n X f) x.
 Compute mult one zero nat S O.
 Compute mult two one nat S O.
 Compute mult three two nat S O.
