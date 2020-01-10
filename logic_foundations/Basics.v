@@ -1,3 +1,26 @@
+Inductive day : Type :=
+  | monday
+  | tuesday
+  | wednesday
+  | thursday
+  | friday
+  | saturday
+  | sunday.
+Definition next_weekday (d:day) : day :=
+  match d with
+  | monday => tuesday
+  | tuesday => wednesday
+  | wednesday => thursday
+  | thursday => friday
+  | friday => monday
+  | saturday => monday
+  | sunday => monday
+  end.
+Compute (next_weekday friday).
+(* ==> monday : day *)
+Compute (next_weekday (next_weekday saturday)).
+(* ==> tuesday : day *)
+
 (*逻辑代数运算*)
 Definition negb (b:bool) : bool :=
   match b with
@@ -55,7 +78,25 @@ Example test_andb33: (andb3 true false true) = false.
 Proof. simpl. reflexivity. Qed.
 Example test_andb34: (andb3 true true false) = false.
 Proof. simpl. reflexivity. Qed.
-
+Module NatPlayground.
+Inductive nat : Type :=
+  | O
+  | S (n : nat).
+Inductive nat' : Type :=
+  | stop
+  | tick (foo : nat').
+Definition pred (n : nat) : nat :=
+  match n with
+    | O => O
+    | S n' => n'
+  end.
+End NatPlayground.
+Definition minustwo (n : nat) : nat :=
+  match n with
+    | O => O
+    | S O => O
+    | S (S n') => n'
+  end.
 (*关于自然数的函数和定理*)
 (*判断是不是一个偶数*)
 Fixpoint evenb (n:nat):bool:=
