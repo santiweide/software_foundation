@@ -1,0 +1,17 @@
+# 理解coq形式证明中的技巧：injective和discriminate
+
+当我们定义一个类型的时候，如果出现不同的变量类型，那么这些类型其实暗示了一些非常有用的性质。用自然数natural number(nat)举个例子：
+
+```lisp
+Inductive nat : Type :=
+       | O : nat
+       | S : nat → nat.
+```
+
+我们可以看到，nat由两种不同形式组成：要么是从constructor O来的，要么是从constructor S来的。由于S为nat->nat的，我们可以得知S是内射的；由于O不是任何nat的后继，我们也可以知道类型O和类型S之间是不相交的。另一种理解“后继是一个内射类型”的方法是“若n的后继和m的后继相等，那么n=m”。
+
+对于这种归纳定义类型，有一个普适结论：所有constructor都是内射的，并且不同的constructor构造的东西之间是不相交的。对于list，cons是内射的：一个带后继的列表(cons l)的前驱(l)还是一个列表；cons和nil则是不相交的，因为nil是空列表，没有后继(无法找到n使得cons n == nil)。
+
+使用内射进行证明就像“撤销”产生一个indjective类型施加的一次操作一样。coq支持我们去撤销任何injective类型的操作。比如证明S n = S m -> n = m的时候，我们可以 intros n m H. 得到H: S n = S m，然后用injection H来撤销S这个injective类型的一次操作得到 n = m,直接得证。
+
+“不相交”带来的福利是，当我们证到两个不同constructor产生的式子相等的时候，就说明这个东西不成立。
