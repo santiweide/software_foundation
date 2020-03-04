@@ -503,30 +503,39 @@ Qed.
 Theorem eqb_sym : forall (n m : nat),
   (n =? m) = (m =? n).
 Proof.
-
-Admitted.
-(** [] *)
-
-(** **** Exercise: 3 stars, advanced, optional (eqb_sym_informal)  
-
-    Give an informal proof of this lemma that corresponds to your
-    formal proof above:
-
-   Theorem: For any [nat]s [n] [m], [(n =? m) = (m =? n)].
-
-   Proof: *)
-   (* FILL IN HERE 
-
-    [] *)
-
+  intros n m.
+  generalize dependent m.  
+  induction n as [| n' IHn].
+  - induction m as [| m' IHm].
+    + reflexivity.
+    + simpl. reflexivity.
+  - induction m as [| m' IHm].
+    + simpl. reflexivity.
+    + simpl. rewrite IHn with (m:=m'). reflexivity. 
+Qed.
 (** **** Exercise: 3 stars, standard, optional (eqb_trans)  *)
 Theorem eqb_trans : forall n m p,
   n =? m = true ->
   m =? p = true ->
   n =? p = true.
 Proof.
-  (* FILL IN HERE *) Admitted.
-(** [] *)
+  intros n m p. 
+  generalize dependent m.
+  generalize dependent p.
+  induction n as [| n' IHn].
+  - induction m as [| m' IHm].
+     + induction p as [| p' IHp].
+        * simpl. reflexivity.
+        * discriminate.
+     + discriminate.
+  - induction m as [| m' IHm].
+     + induction p as [| p' IHp].
+        * simpl. discriminate.
+        * simpl. discriminate.
+     + induction p as [| p' IHp].
+        * simpl. discriminate.
+        * simpl. apply IHn.
+Qed.
 
 (** **** Exercise: 3 stars, advanced (split_combine)  
 
@@ -545,15 +554,19 @@ Proof.
 Definition split_combine_statement : Prop
   (* ("[: Prop]" means that we are giving a name to a
      logical proposition here.) *)
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-
+  := forall X Y (l1:list X) (l2:list Y), length l1 = length l2->split (combine l1 l2) = (l1,l2).
 Theorem split_combine : split_combine_statement.
 Proof.
-(* FILL IN HERE *) Admitted.
-
-(* Do not modify the following line: *)
-Definition manual_grade_for_split_combine : option (nat*string) := None.
-(** [] *)
+  intros X Y. induction l1 as [| x].
+  - simpl. intros l2 H. destruct l2 as [| y].
+    + reflexivity.
+    + discriminate.
+  - destruct l2 as [| y].
+    + discriminate.
+    + intros H. injection H as H. 
+      apply IHl1 in H. simpl.
+      rewrite H. reflexivity.
+Qed.
 
 (** **** Exercise: 3 stars, advanced (filter_exercise)  
 
@@ -565,9 +578,13 @@ Theorem filter_exercise : forall (X : Type) (test : X -> bool)
      filter test l = x :: lf ->
      test x = true.
 Proof.
-  (* FILL IN HERE *) Admitted.
-(** [] *)
-
+  intros X test x l lf.
+  induction l as [| x'].
+  - simpl. discriminate.
+  - simpl. destruct (test x') eqn:H.
+    + intros H1. injection H1 as H1. rewrite H1 in H. apply H.
+    +  apply IHl.
+Qed.
 (** **** Exercise: 4 stars, advanced, recommended (forall_exists_challenge)  
 
     Define two recursive [Fixpoints], [forallb] and [existsb].  The
